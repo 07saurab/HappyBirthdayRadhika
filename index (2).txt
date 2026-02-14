@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday, My Special One 💖</title>
+
+<style>
+:root {
+  --bg: #0f0f1a;
+  --glass: rgba(255,255,255,0.08);
+  --accent: #ff4da6;
+  --accent2: #7c5cff;
+  --text: #ffffff;
+  --soft: #cfcfff;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+body {
+  background: radial-gradient(circle at 20% 30%, #1a1a2e, #0f0f1a);
+  color: var(--text);
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+
+/* Floating Background Particles */
+canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+
+/* Sections */
+section {
+  min-height: 100vh;
+  padding: 100px 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  flex-direction: column;
+  opacity: 0;
+  transform: translateY(40px);
+  transition: 1s ease;
+}
+
+section.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.glass {
+  background: var(--glass);
+  backdrop-filter: blur(15px);
+  padding: 40px;
+  border-radius: 20px;
+  max-width: 800px;
+  box-shadow: 0 0 40px rgba(0,0,0,0.6);
+}
+
+/* Headings */
+h1 {
+  font-size: 3rem;
+  background: linear-gradient(90deg, var(--accent), var(--accent2));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+h2 {
+  margin-bottom: 20px;
+  font-weight: 500;
+}
+
+/* Button */
+button {
+  margin-top: 20px;
+  padding: 12px 30px;
+  border: none;
+  border-radius: 30px;
+  background: linear-gradient(45deg, var(--accent), var(--accent2));
+  color: white;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+button:hover {
+  transform: scale(1.1);
+}
+
+/* Envelope */
+.envelope {
+  width: 200px;
+  height: 130px;
+  background: var(--accent);
+  position: relative;
+  cursor: pointer;
+  margin-top: 30px;
+  border-radius: 8px;
+  transition: 0.6s;
+}
+
+.envelope:before {
+  content: '';
+  position: absolute;
+  top: -65px;
+  left: 0;
+  border-left: 100px solid transparent;
+  border-right: 100px solid transparent;
+  border-bottom: 65px solid var(--accent);
+  transition: 0.6s;
+}
+
+.envelope.open:before {
+  transform: rotateX(180deg);
+  transform-origin: top;
+}
+
+.letter {
+  display: none;
+  margin-top: 30px;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: var(--soft);
+}
+
+.timeline-item {
+  margin: 15px 0;
+  opacity: 0.8;
+}
+
+.gallery img {
+  width: 150px;
+  margin: 10px;
+  border-radius: 15px;
+  transition: 0.4s;
+}
+
+.gallery img:hover {
+  transform: scale(1.1);
+}
+
+/* Surprise */
+.surprise {
+  font-size: 1.3rem;
+  margin-top: 20px;
+  display: none;
+  color: var(--accent);
+}
+
+/* Footer */
+footer {
+  padding: 20px;
+  text-align: center;
+  opacity: 0.6;
+}
+</style>
+</head>
+
+<body>
+
+<canvas id="bg"></canvas>
+
+<!-- Section 1 -->
+<section class="visible">
+  <div class="glass">
+    <h1>Happy Birthday 💖</h1>
+    <h2 id="typing"></h2>
+    <button onclick="scrollToSection(1)">Begin the Journey ✨</button>
+  </div>
+</section>
+
+<!-- Section 2 -->
+<section>
+  <div class="glass">
+    <h2>A Letter Just for You 💌</h2>
+    <div class="envelope" onclick="openLetter(this)"></div>
+    <div class="letter" id="letter">
+      Today isn’t just another day — it’s the day someone incredibly special came into this world.  
+      Your smile lights up my darkest days.  
+      Your laugh is my favorite sound.  
+      And knowing you makes my life brighter than I ever imagined.  
+      I’m so grateful for you. 💕
+    </div>
+  </div>
+</section>
+
+<!-- Section 3 -->
+<section>
+  <div class="glass">
+    <h2>Our Beautiful Memories 🌸</h2>
+    <div class="timeline-item">✨ The first time we talked</div>
+    <div class="timeline-item">💖 The moment I realized you're special</div>
+    <div class="timeline-item">🌙 Late night conversations</div>
+    <div class="timeline-item">🌟 Every little laugh we shared</div>
+  </div>
+</section>
+
+<!-- Section 4 -->
+<section>
+  <div class="glass">
+    <h2>Gallery of Us 📸</h2>
+    <div class="gallery">
+      <img src="https://picsum.photos/200?1">
+      <img src="https://picsum.photos/200?2">
+      <img src="https://picsum.photos/200?3">
+    </div>
+  </div>
+</section>
+
+<!-- Section 5 -->
+<section>
+  <div class="glass">
+    <h2>One Last Surprise 🎁</h2>
+    <button onclick="showSurprise()">Click Me 💝</button>
+    <div class="surprise" id="surprise">
+      I hope this year brings you endless happiness, success, love, and everything your heart desires.  
+      And I hope I get to be part of your journey. 💕✨
+    </div>
+  </div>
+</section>
+
+<footer>
+Made with love 💖
+</footer>
+
+<script>
+/* Scroll */
+function scrollToSection(index){
+  document.querySelectorAll("section")[index].scrollIntoView({behavior:'smooth'});
+}
+
+/* Reveal on Scroll */
+const sections = document.querySelectorAll("section");
+window.addEventListener("scroll", () => {
+  sections.forEach(sec=>{
+    const top = sec.getBoundingClientRect().top;
+    if(top < window.innerHeight - 100){
+      sec.classList.add("visible");
+    }
+  });
+});
+
+/* Typing Effect */
+const text = "To someone who means the world to me...";
+let i=0;
+function type(){
+  if(i<text.length){
+    document.getElementById("typing").innerHTML += text.charAt(i);
+    i++;
+    setTimeout(type,50);
+  }
+}
+type();
+
+/* Envelope */
+function openLetter(el){
+  el.classList.toggle("open");
+  document.getElementById("letter").style.display="block";
+}
+
+/* Surprise */
+function showSurprise(){
+  document.getElementById("surprise").style.display="block";
+  confetti();
+}
+
+/* Simple Confetti */
+function confetti(){
+  for(let i=0;i<100;i++){
+    let conf = document.createElement("div");
+    conf.style.position="fixed";
+    conf.style.width="8px";
+    conf.style.height="8px";
+    conf.style.background=`hsl(${Math.random()*360},100%,50%)`;
+    conf.style.top="0";
+    conf.style.left=Math.random()*100+"vw";
+    conf.style.opacity=1;
+    conf.style.zIndex=999;
+    conf.style.borderRadius="50%";
+    document.body.appendChild(conf);
+    let fall = setInterval(()=>{
+      conf.style.top=parseIn

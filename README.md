@@ -26,3 +26,23 @@ Mil Ke Dono~ Rabb Ke Ghar Mein
 
 Saath Tere Naa Safar
 Woh Safar Nahi Lagtaa
+Tu Hai~ Toh
+Dil Dhadakta~ Hai
+Tu Hai~ Toh
+Saans Aati~ Hai
+Tu Naa Toh Ghar
+Ghar Nahi Lagtaa
+Tu Hai~ Toh
+Darr Nahi* Lagtaa
+
+Tu Hai~ Toh
+Gham* Naa Aate~ Hain
+Tu Hai~ Toh
+Muskuraate* Hain
+Ke Tere Bin
+So Nahi Sakte
+Kisi~ Ke
+Ho Nahi* Sakte
+
+Tu Hai~ Toh
+
